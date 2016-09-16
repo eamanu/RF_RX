@@ -13,27 +13,32 @@
 //nRF24L01 lib
 #include "nRF24L01.h"
 
+/*define addr*/
+uint8_t tx_address[5] = {0xD7,0xD7,0xD7,0xD7,0xD7};
+uint8_t rx_address[5] = {0xE7,0xE7,0xE7,0xE7,0xE7};
+
 int main(){
 	//inizialize usart
 	usart_init();
+
 	//inizialize rf receiver
 	rf_init();
-	rf_config();
 
-	//uint8_t reg = 0x07;
-	uint8_t reg = RX_ADDR_P0;
+	//channel 2; payload len 4 byte
+	rf_config(2,1);
 
-	uint8_t data;
+    /* Set the device addresses */
+	set_tx_address(tx_address);
+    set_rx_address(rx_address);
+
+    uint8_t data;
 
 	while(1){
+		if(rf_data_ready())
+		{
+			rf_get_data(&data);
+			put_int(data);
 
-		data = RXFifoPayloadLength();
-		put_int(data);
-		if(rf_data_ready()>0){
-			put_string("hay algo\n||||	|");
-		}else{
-			put_string("no hay nada\n");
 		}
-		_delay_ms(1000);
 	}
 }
