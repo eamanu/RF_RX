@@ -11,10 +11,10 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
-#define MOSI PORTB2 /*Digital Pin 51*/
-#define MISO PORTB3 /*Digital pin 50*/
-#define SCK PORTB1 /*Digital pin 52 (SCK)*/
-#define SS PORTB0 /*Digital pin 53 (SS)*/
+#define MOSI PORTB2 /*Digital Pin 11*/
+#define MISO PORTB3 /*Digital pin 12*/
+#define SCK PORTB1 /*Digital pin 13 (SCK)*/
+#define SS PORTB0 /*Digital pin 10 (SS)*/
 
 //#define DD_MOSI     DDB3
 

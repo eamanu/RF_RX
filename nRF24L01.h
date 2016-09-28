@@ -11,8 +11,8 @@
 #include "nRF24L01_RegisterMap.h"
 #include <avr/io.h>
 
-#define CE PORTB1 /*Digital pin 09*/
-#define CSN PORTB2 /*Digital pin 10*/
+#define CE PORTB5 /*Digital pin 09*/
+#define CSN PORTB0 /*Digital pin 10*/
 
 volatile uint8_t pay_len;
 
@@ -81,6 +81,16 @@ void rf_powerDown();
 
 /*Status of last message*/
 uint8_t rf_lastMessageStatus();
+
+
+/*
+ * @FIXME: Agregado para testings
+ * */
+
+void TEST_nrf24_transmitSync(uint8_t* dataout,uint8_t len);
+uint8_t TEST_spi_transfer(uint8_t tx);
+void nrf24_configRegister(uint8_t reg, uint8_t value);
+void nrf24_transferSync(uint8_t* dataout,uint8_t* datain,uint8_t len);
 
 #endif /* COMM_NRF24L01_H_ */
 

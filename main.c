@@ -22,6 +22,7 @@ int main(){
 	usart_init();
 
 	//inizialize rf receiver
+	put_string("RX\n");
 	rf_init();
 
 	//channel 2; payload len 4 byte
@@ -32,8 +33,9 @@ int main(){
     set_rx_address(rx_address);
 
     uint8_t data;
-
+    put_string("RX\n");
 	while(1){
+
 		if(rf_data_ready())
 		{
 			rf_get_data(&data);
